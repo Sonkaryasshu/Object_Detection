@@ -1,23 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <!-- <meta charset="UTF-8"> -->
+  <meta name="viewport" content="width=device-width initial-scale=1.0	">
   <title>Object Detection</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ url_for('static',filename='static/style.css') }}">
+  <script src="{{ url_for('static',filename='static/script.js') }}"></script>
+  <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 </head>
 
 <body>
-<header class="navbar navbar-default">
-  <span class="navbar-text"> Object Detection  </span>
+<header>
+  <h1 align="center"> Object Detection  </h1>
 </header>
 
 
 <form action="/upload" method="post" enctype="multipart/form-data" >
-    <label class="btn btn-default btn-file">
-        Browse <input <input type="file" name="image" style="display: none;">
-    </label>
-    <input type="submit" value="Upload your image" class="btn btn-primary">
-</form>
-
+  <div class="file-upload">
+      <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Image</button>
+      <div class="image-upload-wrap">
+        <input class="file-upload-input" type='file' name="image" onchange="readURL(this);" accept="image/*" />
+        <div class="drag-text">
+          <h3>Drag and drop a file or select add Image</h3>
+        </div>
+      </div>
+      <div class="file-upload-content">
+        <img class="file-upload-image" src="#" alt="your image" />
+        <div class="image-title-wrap">
+          <button type="submit" class="submit-btn">Submit</button>
+        </div>
+      </div>
+    </div>
+ </form>
+ 
 </body>
 </html>
