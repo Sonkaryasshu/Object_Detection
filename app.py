@@ -38,12 +38,6 @@ COLORS = np.random.randint(0, 255, size=(len(LABELS), 3),dtype="uint8")
 weightsPath = os.path.sep.join(["yolo-coco", "yolov3.weights"])
 configPath = os.path.sep.join(["yolo-coco", "yolov3.cfg"])
 
-# load our YOLO object detector trained on COCO dataset (80 classes)
-print("[INFO] loading YOLO from disk...")
-net = cv2.dnn.readNetFromDarknet(configPath, weightsPath)
-
-# load our input image and grab its spatial dimensions
-
 @app.route('/upload',methods=['POST'])
 def predict():
 	image_in =request.files.get('image','')
@@ -60,7 +54,12 @@ def predict():
 
 	image = cv2.imread(filename)
 	(H, W) = image.shape[:2]
+	
+	# load our YOLO object detector trained on COCO dataset (80 classes)
+	print("[INFO] loading YOLO from disk...")
+	net = cv2.dnn.readNetFromDarknet(configPath, weightsPath)
 
+	
 	# determine only the *output* layer names that we need from YOLO
 	ln = net.getLayerNames()
 	ln = [ln[i[0] - 1] for i in net.getUnconnectedOutLayers()]
