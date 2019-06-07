@@ -8,6 +8,9 @@ header{
   margin: auto;
   padding: 20px;
 }
+header a {
+  color: #1AA059;
+}
 body {
     font-family: sans-serif;
     background-color: #ffffff;
@@ -19,7 +22,19 @@ body {
     margin: 0 auto;
     padding: 20px;
   }
-  
+  .file-download {
+    background-color: #c2fad9;
+    max-width:  600px;
+    margin: 0 auto;
+    padding: 20px;
+    align-self: center;
+  }
+  .down-img {
+    max-width: 600px;
+    width: 100%;
+    height: auto;
+    align-self: center;
+  }
   .file-upload-btn {
     width: 100%;
     margin: 0;
@@ -78,16 +93,26 @@ body {
   .image-title-wrap {
     padding: 0 15px 15px 15px;
     color: #222;
+    margin: auto;
+    align-self: center;
   }
-  
+  .image-wrap {
+    padding: 0 15px 15px 15px;
+    color: #222;
+    text-align: center;
+  }
+  .image-wrap a {
+    color: white;
+  }
+
   .drag-text {
     text-align: center;
   }
   
   .drag-text h3 {
-    font-weight: 100;
+    font-weight: 700;
     text-transform: uppercase;
-    color: #15824B;
+    color: rgb(243, 224, 117);
     padding: 60px 0;
   }
   
@@ -111,6 +136,7 @@ body {
     outline: none;
     text-transform: uppercase;
     font-weight: 700;
+    align: auto;
   }
   
   .remove-image:hover {

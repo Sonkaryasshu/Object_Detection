@@ -3,7 +3,7 @@
 
 # import the necessary packages
 import numpy as np
-from flask import Flask, request, jsonify, render_template, send_file
+from flask import Flask, request, jsonify, render_template, send_file, redirect, url_for
 import pickle
 import cv2
 import os
@@ -132,8 +132,12 @@ def predict():
 	
 	cv2.imwrite(os.path.join(app.config['DOWNLOAD_FOLDER'], image_in.filename), image)
 	print("[Image Saved In download folder]")
-	file_url = os.path.join(app.config['DOWNLOAD_FOLDER'], image_in.filename)
-	return "<img src=\""+file_url+"\"/>"
+	return redirect(url_for('download', filename=image_in.filename)) 
+
+@app.route('/<filename>')
+def download(filename):
+    filename = os.path.join(app.config['DOWNLOAD_FOLDER'],filename)
+    return render_template('index.html', filename = filename)
 
 if __name__ == '__main__':
 	app.run()

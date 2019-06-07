@@ -11,10 +11,16 @@
 
 <body>
 <header>
-  <h1 align="center"> Object Detection  </h1>
+   <h1 align="center"> <a href="/">Object Detection </a></h1> 
 </header>
-
-
+{% if filename %}
+  <div class="file-download"> 
+    <img class="down-img" src="{{filename}}" alt="your image" />
+    <div class="image-wrap">
+      <button class="submit-btn"><a href="{{filename}}" download>Download Image</a></button>
+    </div>
+  </div>
+{% else %}
 <form action="/upload" method="post" enctype="multipart/form-data" >
   <div class="file-upload">
       <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Image</button>
@@ -32,6 +38,6 @@
       </div>
     </div>
  </form>
- 
+{% endif %}
 </body>
 </html>
